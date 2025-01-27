@@ -3,11 +3,14 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { RPGStatsProvider } from "./contexts/RPGStatsContext";
+import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RPGStatsProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </RPGStatsProvider>
   </StrictMode>
 );

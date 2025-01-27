@@ -1,13 +1,17 @@
 import "./App.css";
 import NewUser from "./pages/NewUser";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
     <>
-      <h1>RPG Life Tracker </h1>
-      <div className="card">
-        <NewUser />
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/new-user" element={<NewUser />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </>
   );
 }

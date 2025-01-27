@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useRPGStatsContext } from "../contexts/RPGStatsContext";
 import ActionsForm from "./ActionsForm";
+import { useNavigate } from "react-router-dom";
 
 const FillingOutActions = () => {
+  const navigate = useNavigate();
   const { areasOfLife } = useRPGStatsContext();
   const [currentAOLInd, setCurrentAOLInd] = useState(0);
 
@@ -11,7 +13,7 @@ const FillingOutActions = () => {
   };
 
   if (currentAOLInd >= areasOfLife.length) {
-    return <p>all done!</p>;
+    navigate("/dashboard");
   }
   return (
     <div>

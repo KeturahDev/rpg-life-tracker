@@ -1,7 +1,7 @@
 import React from "react";
 import { useRPGStatsContext } from "../contexts/RPGStatsContext";
 
-const Dashboard = () => {
+const AreasOfLife = () => {
   const { areasOfLife } = useRPGStatsContext();
   return (
     <div>
@@ -13,4 +13,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default AreasOfLife;
