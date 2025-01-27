@@ -7,9 +7,22 @@
 ---
 
 - Shape of data:
-  - Area of Life
+
+```
+AreasOfLife[]
+[
+  {
+    - name: string (ex: "social")
     - actions: {action: string, point: number}[]
     - points accumilated: number
+  },
+  {
+    - name: self care
+    - actions: {action: string, point: number}[]
+    - points accumilated: number
+  },
+]
+```
 
 Pointing process:
 

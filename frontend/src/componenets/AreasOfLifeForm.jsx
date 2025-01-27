@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useRPGStatsContext } from "../contexts/RPGStatsContext";
 
 const AreasOfLifeForm = () => {
   const [inputValue, setInputValue] = useState("");
   const [categories, setCategories] = useState([]);
+
+  const { addAOL } = useRPGStatsContext();
 
   const addCategory = (e) => {
     e.preventDefault();
@@ -42,7 +45,9 @@ const AreasOfLifeForm = () => {
         ))}
       </ul>
 
-      <button className="save">Save</button>
+      <button className="save" onClick={() => addAOL(categories)}>
+        Save
+      </button>
     </div>
   );
 };
