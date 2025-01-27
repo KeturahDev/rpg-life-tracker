@@ -32,9 +32,16 @@ export const RPGStatsProvider = ({ children }) => {
     });
   };
 
+  const editAOLActions = (AOL, actions) => {
+    setAreasOfLife((prev) =>
+      prev.map((item) => (item.name === AOL.name ? { ...item, actions } : item))
+    );
+  };
+
   const value = {
     areasOfLife,
     setAreasOfLife,
+    editAOLActions,
     addAOL,
   };
 
