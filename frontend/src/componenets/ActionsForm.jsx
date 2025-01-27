@@ -1,39 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRPGStatsContext } from "../contexts/RPGStatsContext";
 
 // action type = {action: string, point: number}[]
-const ActionsForm = ({ AreaOfLife }) => {
+const ActionsForm = ({ AreaOfLife, getNextAreaFn }) => {
   const [actionInput, setActionInput] = useState("");
   const [selectedDifficulty, setSelectedDifficulty] = useState("easy");
   const [actions, setActions] = useState([]);
   const { editAOLActions } = useRPGStatsContext();
 
-  const submitActions = (e) => {
+  const addActions = (e) => {
     e.preventDefault();
-    // const points =
-    //   selectedDifficulty === "easy"
-    //     ? 1
-    //     : selectedDifficulty === "medium"
-    //     ? 2
-    //     : 3; //modify this later to be created based off AOL difficulty in context
 
     setActions((prev) => [
       ...prev,
       { name: actionInput, difficulty: selectedDifficulty },
     ]);
     setActionInput("");
+    setSelectedDifficulty("easy");
   };
 
   const removeAction = (actionName) => {
     setActions(actions.filter((action) => action.name !== actionName));
   };
-  console.log(AreaOfLife);
-  console.log("actions: ", actions);
+
+  const submitActions = () => {
+    editAOLActions(AreaOfLife, actions);
+    getNextAreaFn();
+    setActions([]);
+    setSelectedDifficulty("easy");
+  };
+
   return (
     <div>
       <h2>Actions for {AreaOfLife.name}</h2>
 
-      <form onSubmit={submitActions}>
+      <form onSubmit={addActions}>
         <input
           type="text"
           placeholder="Call a friend"
@@ -75,7 +76,7 @@ const ActionsForm = ({ AreaOfLife }) => {
             />
           </label>
         </>
-        <button type="submit">Save</button>
+        <button type="submit">Add</button>
       </form>
       <ul>
         {actions.map((action, i) => (
@@ -85,7 +86,7 @@ const ActionsForm = ({ AreaOfLife }) => {
           </li>
         ))}
       </ul>
-      <button onClick={() => editAOLActions(AreaOfLife, actions)}>Save</button>
+      <button onClick={submitActions}>Save</button>
     </div>
   );
 };

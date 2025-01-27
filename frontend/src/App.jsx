@@ -1,21 +1,16 @@
 import "./App.css";
-import ActionsForm from "./componenets/ActionsForm";
-import AreasOfLifeForm from "./componenets/AreasOfLifeForm";
-import Dashboard from "./componenets/Dashboard";
+import NewUser from "./pages/NewUser";
 
 function App() {
   return (
     <>
       <h1>RPG Life Tracker </h1>
       <div className="card">
-        <Dashboard />
-        <AreasOfLifeForm />
-        <ActionsForm
-          AreaOfLife={{ name: "Social Life", actions: [], points: 0 }}
-        />
+        <NewUser />
       </div>
     </>
   );
 }
 
 export default App;
+//next step will be to set up react router

@@ -19,7 +19,6 @@ const AreasOfLifeForm = () => {
     setCategories((prev) => prev.filter((cat) => cat !== category));
   };
 
-  console.log(categories);
   return (
     <div>
       <h2>Areas of Life</h2>

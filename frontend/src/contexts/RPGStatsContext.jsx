@@ -18,6 +18,7 @@ export const RPGStatsProvider = ({ children }) => {
   }, [areasOfLife]);
 
   const addAOL = (categories) => {
+    let areas = [];
     categories.forEach((category) => {
       if (areasOfLife.map((aol) => aol.name).includes(category)) {
         return;
@@ -28,8 +29,9 @@ export const RPGStatsProvider = ({ children }) => {
         actions: [],
         points: 0,
       };
-      setAreasOfLife((prev) => [...prev, newArea]);
+      areas.push(newArea);
     });
+    setAreasOfLife((prev) => [...prev, ...areas]);
   };
 
   const editAOLActions = (AOL, actions) => {
