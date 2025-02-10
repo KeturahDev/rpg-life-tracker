@@ -40,11 +40,16 @@ export const RPGStatsProvider = ({ children }) => {
     );
   };
 
+  const getActions = (AOLName) => {
+    return areasOfLife.find(item, item.name === AOLName).actions;
+  };
+
   const value = {
     areasOfLife,
     setAreasOfLife,
     editAOLActions,
     addAOL,
+    getActions,
   };
 
   return (
